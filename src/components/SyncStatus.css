@@ -1,0 +1,19 @@
+.sync-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #166534;
+}
+
+.sync-icon {
+  font-size: 14px;
+}
+
+.sync-text {
+  font-weight: 500;
+}

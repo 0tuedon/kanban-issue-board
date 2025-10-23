@@ -1,5 +1,37 @@
 export type IssueStatus = 'Backlog' | 'In Progress' | 'Done';
 export type IssuePriority = 'low' | 'medium' | 'high';
+export type UserRole = 'admin' | 'contributor';
 
 export interface Issue {
+  id: string;
+  title: string;
+  status: IssueStatus;
+  priority: ProgressStatus;
+  severity: number;
+  createdAt: string;
+  assignee: string;
+  tags: string[];
+  userDefinedRank?: number;
+}
+
+export interface User {
+  name: string;
+  role: UserRole;
+}
+
+export interface UndoState {
+  previousIssue: Issue;
+  timestamp: number;
+}
+
+export interface FilterState {
+  searchQuery: string;
+  assigneeFilter: string;
+  severityFilter: number | null;
+}
+
+export enum ProgressStatus {
+  Backlog = "Backlog",
+  InProgress = "In Progress",
+  Done = "Done"
 }
