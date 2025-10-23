@@ -95,6 +95,7 @@ export const useIssueStore = create<IssueStore>()(
     }
   },
 
+  
   undoUpdate: async () => {
     const { undoState, issues } = get();
 
