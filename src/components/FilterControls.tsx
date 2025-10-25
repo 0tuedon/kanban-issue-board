@@ -1,11 +1,17 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useIssueStore } from '../store/issueStore';
 import './FilterControls.css';
 
-export const FilterControls: React.FC = () => {
-  const { issues, filters, setAssigneeFilter, setSeverityFilter } = useIssueStore();
+export const FilterControls: React.FC = React.memo(() => {
+  const issues = useIssueStore(state => state.issues);
+  const filters = useIssueStore(state => state.filters);
+  const setAssigneeFilter = useIssueStore(state => state.setAssigneeFilter);
+  const setSeverityFilter = useIssueStore(state => state.setSeverityFilter);
 
-  const uniqueAssignees = Array.from(new Set(issues.map(issue => issue.assignee))).sort();
+  const uniqueAssignees = useMemo(
+    () => Array.from(new Set(issues.map(issue => issue.assignee))).sort(),
+    [issues]
+  );
 
   const severityLevels = [1, 2, 3];
 
@@ -50,4 +56,4 @@ export const FilterControls: React.FC = () => {
       </div>
     </div>
   );
-};
+});

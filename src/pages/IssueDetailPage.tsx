@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useIssueStore } from '../store/issueStore';
 import { IssueStatus } from '../types';
 import { currentUser } from '../constants/currentUser';
+import { getSeverityColor } from '../utils/colors';
 import { toast } from 'react-toastify';
 import './IssueDetailPage.css';
 
@@ -26,7 +27,7 @@ export const IssueDetailPage = () => {
             <div className="issue-detail-page">
                 <div className="issue-not-found">
                     <h2>Issue Not Found</h2>
-                    <p>The issue you're looking for doesn't exist or has been deleted.</p>
+                    <p>The issue you're looking for does not exist or has been deleted.</p>
                     <button onClick={() => navigate('/board')} className="back-button">
                         ← Back to Board
                     </button>
@@ -47,12 +48,6 @@ export const IssueDetailPage = () => {
         } finally {
             setIsUpdating(false);
         }
-    };
-
-    const getSeverityColor = (severity: number): string => {
-        if (severity >= 3) return '#ef4444';
-        if (severity === 2) return '#f59e0b';
-        return '#10b981';
     };
 
     const formatDate = (dateString: string): string => {

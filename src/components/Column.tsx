@@ -2,6 +2,7 @@ import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
 import { IssueCard } from './IssueCard';
 import { Issue, IssueStatus } from '../types';
+import { getColumnColor } from '../utils/colors';
 import classNames from 'classnames';
 import './Column.css';
 
@@ -10,29 +11,18 @@ interface ColumnProps {
   issues: Issue[];
 }
 
-export const Column: React.FC<ColumnProps> = ({ status, issues }) => {
+export const Column: React.FC<ColumnProps> = React.memo(({ status, issues }) => {
   const { isOver, setNodeRef } = useDroppable({
     id: status,
   });
-
-  const getColumnColor = (status: IssueStatus): string => {
-    switch (status) {
-      case 'Backlog':
-        return '#6b7280';
-      case 'In Progress':
-        return '#3b82f6';
-      case 'Done':
-        return '#10b981';
-      default:
-        return '#6b7280';
-    }
-  };
 
   return (
     <div className="column">
       <div className="column-header" style={{ borderTopColor: getColumnColor(status) }}>
         <h2 className="column-title">{status}</h2>
-        <span className="issue-count">{issues.length}</span>
+        <span className="issue-count" aria-label={`${issues.length} issues`}>
+          {issues.length}
+        </span>
       </div>
 
       <div
@@ -40,13 +30,17 @@ export const Column: React.FC<ColumnProps> = ({ status, issues }) => {
         className={classNames('column-content', {
           'drop-over': isOver,
         })}
+        role="region"
+        aria-label={`${status} column`}
       >
         {issues.length === 0 ? (
-          <div className="empty-state">No issues</div>
+          <div className="empty-state" role="status">
+            No issues
+          </div>
         ) : (
           issues.map(issue => <IssueCard key={issue.id} issue={issue} />)
         )}
       </div>
     </div>
   );
-};
+});

@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './Navigation.css';
 
 export const Navigation = () => (
-    <nav style={{ padding: '1rem', background: '#eee' }}>
-        <Link to="/board" style={{ marginRight: '1rem' }}>Board</Link>
-        <Link to="/settings">Settings</Link>
+    <nav className="main-navigation" aria-label="Main navigation">
+        <Link to="/board" className="nav-link">Board</Link>
+        <Link to="/settings" className="nav-link">Settings</Link>
     </nav>
 );
