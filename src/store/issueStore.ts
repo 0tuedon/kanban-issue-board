@@ -3,6 +3,7 @@ import { persist } from 'zustand/middleware';
 import { Issue, UndoState, FilterState } from '../types';
 import { mockFetchIssues, mockUpdateIssue } from '../utils/api';
 import { toast } from 'react-toastify';
+import initialIssuesData from '../data/issues.json';
 
 interface IssueStore {
   issues: Issue[];
@@ -34,7 +35,7 @@ let pollingTimer: NodeJS.Timeout | null = null;
 export const useIssueStore = create<IssueStore>()(
   persist(
     (set, get) => ({
-      issues: [],
+      issues: initialIssuesData as Issue[],
       loading: false,
       error: null,
       filters: {
