@@ -1,0 +1,54 @@
+.recently-accessed-sidebar {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  min-width: 250px;
+  max-width: 300px;
+}
+
+.sidebar-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 12px 0;
+}
+
+.recent-issues-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.recent-issue-item {
+  padding: 10px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.recent-issue-item:hover {
+  background: #ffedd5;
+  border-color: #fed7aa;
+  transform: translateX(4px);
+}
+
+.recent-issue-id {
+  display: block;
+  font-size: 11px;
+  color: #6b7280;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.recent-issue-title {
+  display: block;
+  font-size: 13px;
+  color: #111827;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

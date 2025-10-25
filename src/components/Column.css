@@ -1,0 +1,52 @@
+.column {
+  background: #f9fafb;
+  border-radius: 8px;
+  min-width: 320px;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.column-header {
+  padding: 16px;
+  border-top: 4px solid;
+  border-radius: 8px 8px 0 0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.column-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #111827;
+}
+
+.issue-count {
+  background: #e5e7eb;
+  color: #374151;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.column-content {
+  padding: 16px;
+  min-height: 200px;
+  transition: background-color 0.2s ease;
+}
+
+.column-content.drop-over {
+  background-color: #ffedd5;
+}
+
+.empty-state {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+  padding: 32px;
+}
