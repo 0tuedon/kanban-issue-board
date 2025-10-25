@@ -14,8 +14,8 @@ interface IssueStore {
   recentlyAccessedIds: string[];
   lastSyncTime: number | null;
   pollingInterval: number;
+  isUpdating: boolean;
 
-// Methods for the issueStore interface
   fetchIssues: () => Promise<void>;
   updateIssue: (issueId: string, updates: Partial<Issue>) => Promise<void>;
   undoUpdate: () => Promise<void>;
@@ -47,13 +47,24 @@ export const useIssueStore = create<IssueStore>()(
       recentlyAccessedIds: [],
       lastSyncTime: null,
       pollingInterval: 10000,
+      isUpdating: false,
 
-  // Try to fetch issues from our mock api
   fetchIssues: async () => {
+    const { isUpdating } = get();
+    if (isUpdating) {
+      return;
+    }
+
     try {
       set({ loading: true, error: null });
       const data = await mockFetchIssues() as Issue[];
-      set({ issues: data, loading: false, lastSyncTime: Date.now() });
+
+      const currentState = get();
+      if (!currentState.isUpdating) {
+        set({ issues: data, loading: false, lastSyncTime: Date.now() });
+      } else {
+        set({ loading: false });
+      }
     } catch (err) {
       set({ error: 'Failed to fetch issues', loading: false });
       toast.error('Failed to fetch issues');
@@ -69,6 +80,8 @@ export const useIssueStore = create<IssueStore>()(
       toast.error('Issue not found');
       return;
     }
+
+    set({ isUpdating: true });
 
     const undoState: UndoState = {
       previousIssue: { ...issueToUpdate },
@@ -89,14 +102,14 @@ export const useIssueStore = create<IssueStore>()(
 
     try {
       await mockUpdateIssue(issueId, updates);
-
+      set({ isUpdating: false });
     } catch (err) {
-      set({ issues, undoState: null });
+      set({ issues, undoState: null, isUpdating: false });
       toast.error('Failed to update issue. Changes have been reverted.');
     }
   },
 
-  
+
   undoUpdate: async () => {
     const { undoState, issues } = get();
 
@@ -104,6 +117,8 @@ export const useIssueStore = create<IssueStore>()(
       toast.error('Nothing to undo');
       return;
     }
+
+    set({ isUpdating: true });
 
     const { previousIssue } = undoState;
 
@@ -116,8 +131,10 @@ export const useIssueStore = create<IssueStore>()(
     try {
       await mockUpdateIssue(previousIssue.id, previousIssue);
       toast.success('Changes undone successfully');
+      set({ isUpdating: false });
     } catch (err) {
       toast.error('Failed to undo changes');
+      set({ isUpdating: false });
     }
   },
 
