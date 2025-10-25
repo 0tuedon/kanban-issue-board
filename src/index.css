@@ -5,26 +5,26 @@
 }
 
 *:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #ea580c;
   outline-offset: 2px;
 }
 
 button:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #ea580c;
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
 }
 
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #ea580c;
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
 }
 
 a:focus-visible {
-  outline: 3px solid #3b82f6;
+  outline: 3px solid #ea580c;
   outline-offset: 2px;
   text-decoration: underline;
 }
@@ -33,7 +33,7 @@ a:focus-visible {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #3b82f6;
+  background: #ea580c;
   color: white;
   padding: 8px 16px;
   text-decoration: none;
