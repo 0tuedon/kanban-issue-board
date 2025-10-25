@@ -74,8 +74,13 @@ export const IssueCard: React.FC<IssueCardProps> = React.memo(({ issue }) => {
       </div>
 
       <div className="issue-footer">
-        <span className="assignee">👤 {issue.assignee}</span>
-        <span className="priority">{issue.priority}</span>
+        <span className="assignee">{issue.assignee}</span>
+        <div className="footer-right">
+          <span className={`status-badge-small status-${issue.status.toLowerCase().replace(' ', '-')}`}>
+            {issue.status}
+          </span>
+          <span className="priority">{issue.priority}</span>
+        </div>
       </div>
     </div>
   );
