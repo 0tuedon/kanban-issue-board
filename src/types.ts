@@ -6,7 +6,7 @@ export interface Issue {
   id: string;
   title: string;
   status: IssueStatus;
-  priority: ProgressStatus;
+  priority: IssuePriority;
   severity: number;
   createdAt: string;
   assignee: string;
