@@ -16,13 +16,21 @@ export const SearchBar: React.FC = () => {
 
   return (
     <div className="search-bar">
+      <label htmlFor="search-input" className="sr-only">
+        Search issues by title or tags
+      </label>
       <input
+        id="search-input"
         type="text"
         placeholder="Search by title or tags..."
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         className="search-input"
+        aria-describedby="search-hint"
       />
+      <span id="search-hint" className="sr-only">
+        Enter keywords to filter issues
+      </span>
 
       {inputValue && (
         <button
@@ -30,7 +38,7 @@ export const SearchBar: React.FC = () => {
           className="clear-button"
           aria-label="Clear search"
         >
-          x
+          ×
         </button>
       )}
     </div>
