@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+}
+
+button:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(234, 88, 12, 0.2);
+}
+
+a:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+  text-decoration: underline;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #ea580c;
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 100;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+}

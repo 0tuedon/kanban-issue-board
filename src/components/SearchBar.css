@@ -16,9 +16,9 @@
   transition: all 0.2s ease;
 }
 
-.search-input:focus {
-  border-color: #f97316;
-  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1);
+.search-input:focus {  
+  border: none;
+  box-shadow: 0 0 0 3px rgba(234, 88, 12, 0.1);
 }
 
 .clear-button {
@@ -37,4 +37,23 @@
 
 .clear-button:hover {
   color: #374151;
+}
+
+.clear-button:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* screen readers*/
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }

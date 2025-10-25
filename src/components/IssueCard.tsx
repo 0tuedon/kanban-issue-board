@@ -4,6 +4,7 @@ import { useDraggable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
 import { Issue } from '../types';
 import { currentUser } from '../constants/currentUser';
+import { getSeverityColor } from '../utils/colors';
 import classNames from 'classnames';
 import './IssueCard.css';
 
@@ -11,7 +12,7 @@ interface IssueCardProps {
   issue: Issue;
 }
 
-export const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
+export const IssueCard: React.FC<IssueCardProps> = React.memo(({ issue }) => {
   const navigate = useNavigate();
   const canDrag = currentUser.role === 'admin';
 
@@ -29,10 +30,11 @@ export const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
     navigate(`/issue/${issue.id}`);
   };
 
-  const getSeverityColor = (severity: number): string => {
-    if (severity >= 3) return '#ef4444';
-    if (severity === 2) return '#f59e0b';
-    return '#10b981';
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      navigate(`/issue/${issue.id}`);
+    }
   };
 
   return (
@@ -43,9 +45,13 @@ export const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
         'draggable': canDrag,
         'dragging': isDragging,
       })}
-      onClick={handleClick}
       {...attributes}
       {...listeners}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      role="button"
+      tabIndex={0}
+      aria-label={`Issue ${issue.id}: ${issue.title}`}
     >
       <div className="issue-card-header">
         <span className="issue-id">#{issue.id}</span>
@@ -68,9 +74,14 @@ export const IssueCard: React.FC<IssueCardProps> = ({ issue }) => {
       </div>
 
       <div className="issue-footer">
-        <span className="assignee">👤 {issue.assignee}</span>
-        <span className="priority">{issue.priority}</span>
+        <span className="assignee">{issue.assignee}</span>
+        <div className="footer-right">
+          <span className={`status-badge-small status-${issue.status.toLowerCase().replace(' ', '-')}`}>
+            {issue.status}
+          </span>
+          <span className="priority">{issue.priority}</span>
+        </div>
       </div>
     </div>
   );
-};
+});

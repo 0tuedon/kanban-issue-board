@@ -30,8 +30,12 @@
   color: #374151;
   font-size: 12px;
   font-weight: 600;
-  padding: 4px 8px;
-  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  width: 24px;
+  height: 24px;
 }
 
 .column-content {
