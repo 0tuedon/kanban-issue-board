@@ -36,7 +36,7 @@ export const useIssueStore = create<IssueStore>()(
   persist(
     (set, get) => ({
       issues: initialIssuesData as Issue[],
-      loading: false,
+      loading: true,
       error: null,
       filters: {
         searchQuery: '',
@@ -187,6 +187,7 @@ export const useIssueStore = create<IssueStore>()(
     {
       name: 'issue-board-storage',
       partialize: (state) => ({
+        issues: state.issues,
         filters: state.filters,
         recentlyAccessedIds: state.recentlyAccessedIds,
         lastSyncTime: state.lastSyncTime,
