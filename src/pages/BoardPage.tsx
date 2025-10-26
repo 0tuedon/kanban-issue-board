@@ -1,4 +1,4 @@
-import  { useEffect, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { DndContext, DragEndEvent, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
 import { useIssueStore } from '../store/issueStore';
 import { filterAndSortIssues } from '../utils/sorting';

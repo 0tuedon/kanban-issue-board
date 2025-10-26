@@ -5,7 +5,7 @@
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  max-height: calc(100vh - 250px);
 }
 
 .column-header {
@@ -41,7 +41,27 @@
 .column-content {
   padding: 16px;
   min-height: 200px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
   transition: background-color 0.2s ease;
+}
+
+.column-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.column-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.column-content::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+
+.column-content::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 
 .column-content.drop-over {

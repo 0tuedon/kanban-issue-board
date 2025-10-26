@@ -54,9 +54,16 @@ export const mockFetchIssues = () => {
         setTimeout(async () => {
             const store = useMockBackendStore.getState();
 
+        
             if (!store.initialized || store.issues.length === 0) {
-                const module = await import('../data/issues.json');
-                store.initializeIssues(module.default);
+                try {
+                    const module = await import('../data/issues.json');
+                    store.initializeIssues(module.default);
+                } catch (error) {
+                    console.error('Failed to load initial issues data:', error);
+                    resolve([]);
+                    return;
+                }
             }
 
             resolve(JSON.parse(JSON.stringify(store.issues)));
