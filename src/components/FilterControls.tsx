@@ -7,6 +7,7 @@ export const FilterControls: React.FC = React.memo(() => {
   const filters = useIssueStore(state => state.filters);
   const setAssigneeFilter = useIssueStore(state => state.setAssigneeFilter);
   const setSeverityFilter = useIssueStore(state => state.setSeverityFilter);
+  const resetFilters = useIssueStore(state => state.resetFilters);
 
   const uniqueAssignees = useMemo(
     () => Array.from(new Set(issues.map(issue => issue.assignee))).sort(),
@@ -14,6 +15,8 @@ export const FilterControls: React.FC = React.memo(() => {
   );
 
   const severityLevels = [1, 2, 3];
+
+  const hasActiveFilters = filters.assigneeFilter || filters.severityFilter !== null || filters.searchQuery;
 
   return (
     <div className="filter-controls">
@@ -54,6 +57,16 @@ export const FilterControls: React.FC = React.memo(() => {
           ))}
         </select>
       </div>
+
+      {hasActiveFilters && (
+        <button
+          onClick={resetFilters}
+          className="reset-filters-button"
+          title="Clear all filters"
+        >
+          ✕ Reset
+        </button>
+      )}
     </div>
   );
 });
