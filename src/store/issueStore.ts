@@ -22,6 +22,7 @@ interface IssueStore {
   setSearchQuery: (query: string) => void;
   setAssigneeFilter: (assignee: string) => void;
   setSeverityFilter: (severity: number | null) => void;
+  resetFilters: () => void;
   addRecentlyAccessed: (issueId: string) => void;
   loadRecentlyAccessed: () => void;
   startPolling: () => void;
@@ -61,7 +62,16 @@ export const useIssueStore = create<IssueStore>()(
 
       const currentState = get();
       if (!currentState.isUpdating) {
-        set({ issues: data, loading: false, lastSyncTime: Date.now() });
+
+        if (data && data.length > 0) {
+          set({ issues: data, loading: false, lastSyncTime: Date.now() });
+        } else if (currentState.issues.length === 0) {
+
+          set({ loading: false, lastSyncTime: Date.now() });
+        } else {
+
+          set({ loading: false, lastSyncTime: Date.now() });
+        }
       } else {
         set({ loading: false });
       }
@@ -156,6 +166,16 @@ export const useIssueStore = create<IssueStore>()(
     }));
   },
 
+  resetFilters: () => {
+    set({
+      filters: {
+        searchQuery: '',
+        assigneeFilter: '',
+        severityFilter: null,
+      }
+    });
+  },
+
   addRecentlyAccessed: (issueId: string) => {
     const { recentlyAccessedIds } = get();
 
@@ -209,6 +229,14 @@ export const useIssueStore = create<IssueStore>()(
         recentlyAccessedIds: state.recentlyAccessedIds,
         lastSyncTime: state.lastSyncTime,
       }),
+
+      onRehydrateStorage: () => (state) => {
+  
+        if (state && state.issues.length === 0) {
+          console.log('Store rehydrated with no issues, loading initial data...');
+          state.issues = initialIssuesData as Issue[];
+        }
+      },
     }
   )
 );

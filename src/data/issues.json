@@ -137,6 +137,146 @@
     "severity": 3,
     "createdAt": "2025-07-16T10:25:00Z",
     "assignee": "carol",
+    "tags": ["ui"]
+  },
+  {
+    "id": "4",
+    "title": "Update dependencies to latest versions",
+    "status": "Backlog",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-10T08:00:00Z",
+    "assignee": "dave",
+    "tags": ["maintenance", "security"]
+  },
+  {
+    "id": "5",
+    "title": "Optimize image loading on homepage",
+    "status": "In Progress",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-09T11:30:00Z",
+    "assignee": "eve",
+    "tags": ["performance", "frontend"]
+  },
+  {
+    "id": "6",
+    "title": "Add forgot password feature",
+    "status": "Backlog",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-11T10:45:00Z",
+    "assignee": "alice",
+    "tags": ["auth", "feature"]
+  },
+  {
+    "id": "7",
+    "title": "Refactor user profile component",
+    "status": "In Progress",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-11T14:20:00Z",
+    "assignee": "carol",
+    "tags": ["refactor", "frontend"]
+  },
+  {
+    "id": "8",
+    "title": "Fix typo in email notifications",
+    "status": "Done",
+    "priority": "low",
+    "severity": 1,
+    "createdAt": "2025-07-08T09:00:00Z",
+    "assignee": "bob",
+    "tags": ["bug", "notifications"]
+  },
+  {
+    "id": "9",
+    "title": "Add analytics tracking to signup flow",
+    "status": "Backlog",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-12T16:00:00Z",
+    "assignee": "dave",
+    "tags": ["analytics", "feature"]
+  },
+  {
+    "id": "10",
+    "title": "Fix overlapping buttons on mobile view",
+    "status": "In Progress",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-10T09:15:00Z",
+    "assignee": "carol",
+    "tags": ["ui", "bug", "mobile"]
+  },
+  {
+    "id": "11",
+    "title": "Improve accessibility for login form",
+    "status": "Backlog",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-13T08:45:00Z",
+    "assignee": "alice",
+    "tags": ["accessibility", "frontend"]
+  },
+  {
+    "id": "12",
+    "title": "Implement two-factor authentication",
+    "status": "Backlog",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-14T11:00:00Z",
+    "assignee": "bob",
+    "tags": ["auth", "security", "feature"]
+  },
+  {
+    "id": "13",
+    "title": "Fix slow response on search API",
+    "status": "In Progress",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-13T15:30:00Z",
+    "assignee": "dave",
+    "tags": ["backend", "performance", "api"]
+  },
+  {
+    "id": "14",
+    "title": "Add tooltips to dashboard icons",
+    "status": "Done",
+    "priority": "low",
+    "severity": 1,
+    "createdAt": "2025-07-10T13:30:00Z",
+    "assignee": "eve",
+    "tags": ["ui", "feature"]
+  },
+  {
+    "id": "15",
+    "title": "Implement global error handler",
+    "status": "In Progress",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-15T09:40:00Z",
+    "assignee": "bob",
+    "tags": ["backend", "bug", "stability"]
+  },
+  {
+    "id": "16",
+    "title": "Add pagination to users list",
+    "status": "Backlog",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-15T12:10:00Z",
+    "assignee": "alice",
+    "tags": ["feature", "ui"]
+  },
+  {
+    "id": "17",
+    "title": "Fix crash when uploading large files",
+    "status": "In Progress",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-16T10:25:00Z",
+    "assignee": "carol",
     "tags": ["bug", "upload", "backend"]
   },
   {
@@ -168,5 +308,35 @@
     "createdAt": "2025-07-17T13:20:00Z",
     "assignee": "bob",
     "tags": ["backend", "api", "bug"]
+  },
+  {
+    "id": "21",
+    "title": "Add loading skeleton for reports page",
+    "status": "Done",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-18T11:30:00Z",
+    "assignee": "carol",
+    "tags": ["frontend", "ui", "performance"]
+  },
+  {
+    "id": "22",
+    "title": "Fix timezone conversion issue in reports",
+    "status": "Backlog",
+    "priority": "medium",
+    "severity": 2,
+    "createdAt": "2025-07-18T16:15:00Z",
+    "assignee": "alice",
+    "tags": ["backend", "bug", "reports"]
+  },
+  {
+    "id": "23",
+    "title": "Implement role-based access control",
+    "status": "In Progress",
+    "priority": "high",
+    "severity": 3,
+    "createdAt": "2025-07-19T09:45:00Z",
+    "assignee": "dave",
+    "tags": ["auth", "security", "feature"]
   }
 ]

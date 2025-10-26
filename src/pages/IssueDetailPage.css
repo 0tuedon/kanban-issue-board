@@ -253,7 +253,6 @@
   margin: 0 0 2rem 0;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   .issue-detail-page {
     padding: 1rem;
